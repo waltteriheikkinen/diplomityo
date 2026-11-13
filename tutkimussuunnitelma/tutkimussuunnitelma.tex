@@ -1,0 +1,80 @@
+\documentclass[utf8]{gradu3}
+% Jos työ on kandidaatintutkielma eikä pro gradu, käytä ylläolevan asemesta
+%\documentclass[utf8,bachelor]{gradu3}
+% Jos kirjoitat englanniksi, käytä ylläolevan asemesta
+%\documentclass[utf8,english]{gradu3}
+% tai
+%\documentclass[utf8,bachelor,english]{gradu3}
+
+\usepackage{graphicx} % kuvien mukaan ottamista varten
+
+\usepackage{amsmath} % hyödyllinen jos tekstisi sisältää matikkaa,
+                     % ei pakollinen
+
+
+\usepackage{booktabs} % hyvä kauniiden taulukoiden tekemiseen
+
+% HUOM! Tämän tulee olla viimeinen \usepackage koko dokumentissa!
+\usepackage[bookmarksopen,bookmarksnumbered,linktocpage]{hyperref}
+
+\addbibresource{references.bib} % Lähdetietokannan tiedostonimi
+
+\begin{document}
+
+\title{Tutkimussuunnitelma}
+\studyline{Datatiede ja koneoppiminen}
+\tiivistelma{%
+Tämä sisältää diplomityön karkean tutkimussuunnitelman}
+
+
+\author{Waltteri Heikkinen}
+% jos useita tekijöitä, anna useampi \author-komento
+\supervisor{Hakala Ismo, Rautiainen Ilkka}
+% jos useita ohjaajia, anna useampi \supervisor-komento
+
+% et tarvitse tätä riviä kandidaatin- tai pro gradu -tutkielmassa!
+% diplomityössä jätä komento mukaan ja muuta sulkeiden sisään "diplomityö"
+
+% vaihda tämä rivi vastaamaan tutkinto-ohjelmaasi, huom. genetiivi ja
+% iso alkukirjain
+\subject{Tietojenkäsittelytieteen}
+
+\maketitle
+
+\mainmatter
+
+\chapter{Johdanto}
+
+Tutkimuksessa käytetään koneoppimista kalibroimaan halpojen ilman partikkeleiden (pm10) määrää mittaavien sensoreiden (Sensirion SEN54) dataa. Tarkoitus on kouluttaa malli joka osaa korjata sensirionin mittalukemat vastaamaan paremmin ilmatieteenlaitoksen (Fidas 200 E) dataa. Kalibroinnin onnistuessa halpojen laitteiden mittatarkkuus paranee ja näitä voidaan käyttää tehokkaammin ilman pölypitoisuuden monitoroimiseen. 
+
+
+\chapter{Kirjallisuuskartoitus}
+
+Kirjallisuuskartoitus tehdään hakemalla artikkeleita google scholarista ja pubmedista. Lisäksi tutustutaan laitevalmistajien dokumentaatioon. Hakusanoja voivat olla esim: Machine learning, Gradient Boost, XGBoost, Particulate matter sensors, particulate matter sensor calibration
+Kalibrointitutkimusta ilman kaasupitoisuuksien mittaamiseen on tehty jonkin verran. Ilman partikkelipitoisuuden mittatulosten kalibroinnin osalta tutkimus on huomattavasti suppeampaa.  Halpoja sensoreita on kuitenkin onnistuneesti parannettu koneoppimismallien avulla.
+
+Francesco Concas, Julien Mineraud, Eemil Lagerspetz, Samu Varjonen, Xiaoli Liu, Kai Puolamäki, Petteri Nurmi, and Sasu Tarkoma. 2021. Low-Cost Outdoor Air Quality Monitoring and Sensor Calibration: A Survey and Critical Analysis. ACM Trans. Sen. Netw. 17, 2, Article 20 (May 2021), 44 pages. https://doi.org/10.1145/3446005
+
+Ehkäpä tärkein metodilähde:
+Tianqi Chen and Carlos Guestrin. 2016. XGBoost: A Scalable Tree Boosting System. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD '16). Association for Computing Machinery, New York, NY, USA, 785–794. https://doi.org/10.1145/2939672.2939785
+
+\chapter{Tutkimusaihe/kysymys}
+
+Voidaanko halpojen sensoreiden mittatarkkuutta parantaa koneoppimismallien avulla?
+
+\chapter{Tutkimusstrategia/metodi ja sen valintaperusteet}
+
+Koulutetaan XGBoost malli ennustamaan Fidas 200 E laitteen arvoja Sensirion SEN54 datan sekä ilmastomuuttujien perusteella
+
+\chapter{Aineiston keruu}
+
+Aineisto kerättiin Kokkolassa ilmatieteen laitoksen mittausasemalta. Sensirionin data kerättiin Kokkolan yliopistokeskus Chydeniuksen omilla laitteilla ja ilmatieteenlaitoksen data saatiin ilmatieteteen laitokselta. Data on vuosilta 2025 ja 2026. Data talletetaan yliopistokeskus Chydeniuksen toimesta.
+
+\chapter{Aineiston analyysi}
+
+Koko analyysi tehtiin pythonilla. Tämä sisältää datan esikäsittelyn, mallien kouluttamisen ja tulosten esittelyn.
+
+\printbibliography
+
+
+\end{document}
